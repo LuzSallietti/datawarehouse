@@ -12,7 +12,6 @@ async function get() {
     })
 
 }
-// falta el GET by filter criteria con REQUEST! WHERE (name, job_title, city_id, company_id, interesting, favourite_channel)
 
 async function add(req) {
     const firstname = req.body.firstname;

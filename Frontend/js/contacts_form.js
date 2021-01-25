@@ -142,8 +142,7 @@ new_contact_region.addEventListener('input', () => {
 
 function displayCountryCities(country_id, select){
     cities_stored.forEach(city => {
-        if(city.country_id === country_id){
-            console.log(city.name)
+        if(city.country_id === country_id){            
             let option = document.createElement("option");
             select.appendChild(option);
             option.value = city.id;
@@ -153,8 +152,7 @@ function displayCountryCities(country_id, select){
 }
 
 new_contact_country.addEventListener('input', () => {
-    let country_id = parseInt(new_contact_country.value);
-    console.log(country_id);
+    let country_id = parseInt(new_contact_country.value);    
     cleanOptions(new_contact_city);
     displayCountryCities(country_id, new_contact_city);
 })
@@ -228,7 +226,7 @@ create_contact_form.addEventListener('submit', (e) => {
 
     }
     getContact_ChannelPreferences("channelData", "channelPref", new_contact_preferences);
-    console.log(new_contact_preferences); //acá ya tengo el array de canales con sus valores  
+     
     
     async function storeContactChannels(id){
         new_contact_preferences.forEach(channel => {

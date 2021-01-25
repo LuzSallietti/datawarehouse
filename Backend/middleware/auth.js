@@ -8,12 +8,9 @@ const auth = (req, res, next) => {
         if (error){
             res.status(401).json(error);
         }
-        req.id = decoded.id;
-        console.log(req.id);
-        req.user = decoded.user;
-        console.log(req.user);
-        req.admin = decoded.admin;
-        console.log(req.admin);
+        req.id = decoded.id;        
+        req.user = decoded.user;        
+        req.admin = decoded.admin;        
         next();
     })
 }

@@ -111,21 +111,18 @@ edit_contact_interesting.oninput = function () {
 
 edit_contact_form.addEventListener('submit', (e) => {
     e.preventDefault();
-    getEditedContactData();
-    console.log(edited_contact);
+    getEditedContactData();    
     
-    getContact_ChannelPreferences("editChannelData", "editChannelPref", edit_contact_preferences);
-    console.log(edit_contact_preferences);
+    getContact_ChannelPreferences("editChannelData", "editChannelPref", edit_contact_preferences);    
 
     updateData(all_contacts, contact_id, edited_contact)
     .then(response => {
-        if(response === "Succesfully updated"){
-            console.log("actualizó en contacts");
+        if(response === "Succesfully updated"){            
             updateContactChannels(contact_id)
             .then (response => console.log(response))
             .catch (error => console.log(error));
             
         }
-    })//ya está ok el update en la tabla contacts / falta el de la tabla contacts_channels
+    })
     .catch (error => console.log(error));
 })

@@ -13,8 +13,7 @@ async function post(req) {
         {type: sequelize.QueryTypes.SELECT }
     )
     .then(function (user_query) {
-        if (user_query.length === 1){
-            console.log(user_query);
+        if (user_query.length === 1){            
             let token_data = {           
             token:jwt.sign({ id: user_query[0].id, user: user_query[0].email, admin: user_query[0].admin }, `${process.env.jtw_SEED}`, { expiresIn: '24h' }),
             role: user_query[0].admin};

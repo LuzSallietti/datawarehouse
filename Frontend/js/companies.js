@@ -96,8 +96,7 @@ function deleteTriggers(btns, deleteModal){
 }
 
 edition_countries_select.addEventListener('input', () => {
-    let country_id = parseInt(edition_countries_select.value);
-    console.log(country_id);
+    let country_id = parseInt(edition_countries_select.value);    
     cleanCities(edition_cities_select);    
     cities_on_db.forEach(element => {
         if (element.country_id === country_id) {

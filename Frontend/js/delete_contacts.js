@@ -44,7 +44,7 @@ confirm_delete_contact.addEventListener('click', () => {
 display_none_transition(alert_multiple_delete, delete_selected_contacts); //mostrar alerta
 confirm_multiple_delete.addEventListener("click", () => {
     selected_contacts.forEach(contact_id => {
-        deleteData(all_contacts, contact_id) // acá va la funcion delete(contact_id);
+        deleteData(all_contacts, contact_id) 
         .then (response => {
             if (response === "Succesfully deleted"){
                 window.location.reload();

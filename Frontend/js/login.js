@@ -23,8 +23,7 @@ async function checkData(){
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     checkData()
-    .then ( response => {
-        console.log(response);
+    .then ( response => {        
         if (response.valid_user){
             let token = response.valid_user.token;
             let role = response.valid_user.role;

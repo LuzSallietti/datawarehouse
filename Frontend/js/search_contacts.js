@@ -26,8 +26,7 @@ dropdown_search_icon.addEventListener("click", () => {
 })
 
 search_country.addEventListener("click", () => {
-    let country_id = parseInt(search_country.value);
-    console.log(country_id);
+    let country_id = parseInt(search_country.value);    
     cleanOptions(search_city);
     displayCountryCities(country_id, search_city);
 })
@@ -50,53 +49,52 @@ search_icon.addEventListener('click', () => {
 
     var url = new URL(`${contacts_search}`);
     var search_params = url.searchParams;
-
-    let search_criteria = {}; // no lo uso mas
+    
 
     if (search_firstname.value !==""){
-        // new value of "id" is set to "101"
+        // asignar parámetros nombre/valor
         search_params.set('firstname', `${search_firstname.value}`);
-        //search_criteria.firstname = search_firstname.value;
+        
     }
     if (search_lastname.value !==""){
-        //search_criteria.lastname = search_lastname.value;
+        
         search_params.set('lastname', `${search_lastname.value}`);
     }
     if (search_job_title.value !==""){
-        //search_criteria.job_title = search_job_title.value;
+        
         search_params.set('job_title', `${search_job_title.value}`);
     }
     if (search_company.value !==""){
-        //search_criteria.company_id = search_company.value;
+       
         search_params.set('company_id', `${search_company.value}`);
     }       
     if (search_city.value !==""){
-        //search_criteria.city_id = search_city.value;
+        
         search_params.set('city_id', `${search_city.value}`);
     }
     if (search_country.value !==""){
-        //search_criteria.country_id = search_country.value;
+        
         search_params.set('country_id', `${search_country.value}`);
     }
     if (search_interesting.value !==""){
-        //search_criteria.interesting = search_interesting.value;
+       
         search_params.set('interesting', `${search_interesting.value}`);
     }
     if (search_channel.value !==""){
-        //search_criteria.fav_channel = search_channel.value;
+        
         search_params.set('fav_channel', `${search_channel.value}`);
     }
     
-    // change the search property of the main url
+    // cambiar la propiedad de búsqueda de la URL principal
     url.search = search_params.toString();
 
-    // the new url string
+    // la nueva url a string
     var search_url = url.toString();
 
     // output : 
     console.log(search_url);
 
-    //tiene que ir al request GET contacts by filter
+    //va al request GET contacts by filter
     getDataByFilter(search_url)
     .then(response => {
         console.log(response)
@@ -116,13 +114,12 @@ search_icon.addEventListener('click', () => {
         singleCheckTrigger();
         } else {
             deleteResults(contacts_list_section);
-            let div = document.createElement("div");//crear el mensaje sin resultados
+            let div = document.createElement("div");//crear el mensaje sin resultados para los criterios ingresados
             contacts_list_section.appendChild(div);
             div.classList.add("col-12", "text-center", "p-5")
             div.innerHTML=`<h4>No hay resultados que coincidan con tu criterio de búsqueda.</h4>`;
         }
     
     }) 
-    .catch(error => console.log(error));
-    //resetar el form de busqueda y los inputs con cleanoption();    
+    .catch(error => console.log(error));        
 });

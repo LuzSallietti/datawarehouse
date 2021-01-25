@@ -41,7 +41,7 @@ const discard_delete_city = document.getElementById("cancelDeleteCity");
 
 const error_modal = document.getElementById("errorModal");
 const close_error_modal = document.getElementById("closeErrorModal");
-let id_region ; //deberia llamarse id_pk;
+let id_region ; 
 let region_id_fk;
 let country_id_fk;
 

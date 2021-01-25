@@ -72,8 +72,7 @@ async function verifyToken(service) {
 function display_query_results(array, section) {
 
     for (let i = 0; i < array.length; i++) {
-        let result = array[i];
-        console.log(result);
+        let result = array[i];        
         let div = document.createElement("div");
         section.appendChild(div);
         div.classList.add("results", "row", "justify-content-center", "align-items-center");
@@ -116,7 +115,7 @@ function editTriggers(btns, edit_form) {
         let btn = btns[i];
         display_none_transition(edit_form, btn);
         btn.addEventListener("click", (e) => {
-            let get_id = (e.target.id).split("-"); // obtener el id del contacto para el update
+            let get_id = (e.target.id).split("-"); 
             contact_id = parseInt(get_id[1]);
             //completa el form con los datos de ese contacto, filtrado x su id
             showContactInfo(contacts_stored, contact_id);
@@ -176,8 +175,7 @@ function checkboxesTriggers() {
                 let checkbox = checkboxes[i];
                 checkbox.checked = true;
                 let contact_id = (checkbox.id.split("-"))[1];
-                selected_contacts.push(contact_id);
-                console.log(selected_contacts);
+                selected_contacts.push(contact_id);                
             }
             selection_count.classList.remove("d-none");
             row_count = checkboxes.length - 1;
@@ -191,13 +189,12 @@ function checkboxesTriggers() {
                 row_count = 0;
                 selection_count.innerText = ``;
                 delete_selected_contacts.classList.add("d-none");
-                let contact_id = (checkbox.id.split("-"))[1];
-                console.log(contact_id);
+                let contact_id = (checkbox.id.split("-"))[1];                
 
                 selected_contacts.forEach((contact, index) => {
                     if (contact === contact_id) {
                         selected_contacts.splice(index, 1);
-                        console.log(selected_contacts);
+                        
                     }
                 })
             })
@@ -216,18 +213,15 @@ function singleCheckTrigger() {
                 row_count += 1;
                 selection_count.innerText = `${row_count} seleccionados`;
                 let contact_id = (e.target.id.split("-"))[1];
-                selected_contacts.push(contact_id);
-                console.log(selected_contacts);
+                selected_contacts.push(contact_id);                
                 delete_selected_contacts.classList.remove("d-none");
             } else {
                 row_count -= 1;
                 selection_count.innerText = `${row_count} seleccionados`;
-                let contact_id = (e.target.id.split("-"))[1];
-                console.log(contact_id);
+                let contact_id = (e.target.id.split("-"))[1];                
                 selected_contacts.forEach((contact, index) => {
                     if (contact === contact_id) {
-                        selected_contacts.splice(index, 1);
-                        console.log(selected_contacts);
+                        selected_contacts.splice(index, 1);                        
                     }
                 })
             }

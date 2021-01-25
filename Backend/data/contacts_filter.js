@@ -2,9 +2,8 @@ const sequelize = require("../config/mysql");
 
 async function getByFilter(req) {
 
-    console.log(req.query);
-    let body_length = (Object.values(req.query).length);
-    console.log(body_length);
+    
+    let body_length = (Object.values(req.query).length);    
     
 
     if (body_length === 1) {
@@ -87,7 +86,7 @@ async function getByFilter(req) {
             search_object.fav_channel = req.query.fav_channel;
         }
 
-        console.log(search_object);
+        
 
         Object.entries(search_object).forEach(([key, value]) => {
             if (key === "city_id") {
