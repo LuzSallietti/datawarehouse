@@ -68,12 +68,12 @@ node app.js
 
 ## Login y navegación
 Abrir el archivo /Frontend/index.html desde el navegador web y ejecutar el acceso con las credenciales ya creadas en la base de datos, con privilegio de administrador (usuario: admin@rocket.com / password: acamica).
-*En la sección Usuarios se podrán consultar, crear, actualizar y eliminar usuarios del sistema, asignándoles pefil de usuario administrador o usuario básico.
-*En la sección Región/Ciudad se podrán crear, consultar, actualizar y eliminar regiones, países y ciudades.
-*En la sección Compañías se podrán crear, consultar, actualizar y eliminar compañías.
-*Una vez trabajadas las anteriores secciones, en la sección Contactos se crearán, consultarán, actualizarán y eliminarán (de forma individual o masiva), los contactos.
+* En la sección Usuarios se podrán consultar, crear, actualizar y eliminar usuarios del sistema, asignándoles pefil de usuario administrador o usuario básico.
+* En la sección Región/Ciudad se podrán crear, consultar, actualizar y eliminar regiones, países y ciudades.
+* En la sección Compañías se podrán crear, consultar, actualizar y eliminar compañías.
+* Una vez trabajadas las anteriores secciones, en la sección Contactos se crearán, consultarán, actualizarán y eliminarán (de forma individual o masiva), los contactos.
 
 ## Extra- Consulta de documentación
 
-Abrir el archivo delilah.yaml y copiar su contenido en [Swagger](https://editor.swagger.io/#) o abrirlo en el editor de código.
+Abrir el archivo /Backend/docs/datawarehouse.yaml y copiar su contenido en [Swagger](https://editor.swagger.io/#) o abrirlo en el editor de código.
 Permite conocer los endpoints y servicios desarrollados, junto con la información necesaria para hacer uso de los mismos.
