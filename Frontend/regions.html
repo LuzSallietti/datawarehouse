@@ -59,7 +59,7 @@
           </div>
         </div>
          <!-- Modal Error -->
-         <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+         <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header error-header">
@@ -158,7 +158,7 @@
                   <h3 class="blue-text py-4">
                     <i class="blue-text fas fa-globe-americas mr-3"></i>Crear región
                   </h3>              
-                  <label for="nombre">Nombre *</label>
+                  <label for="regionName">Nombre *</label>
                   <input
                     type="text"
                     class="form-control"
@@ -169,7 +169,7 @@
                     >Ingresa el nombre de la región </small
                   >
                 </div>
-                  
+              </div>                  
               <div class="form-row justify-content-center my-4 mx-auto w-100">
                 <div class="col-3">                                  
                   <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
@@ -196,7 +196,7 @@
                   <h3 class="py-4 blue-text">
                     <i class="fas fa-globe-americas mr-3 blue-text"></i>Crear país
                   </h3>               
-                  <label for="nombre">Nombre *</label>
+                  <label for="countryName">Nombre *</label>
                   <input
                     type="text"
                     class="form-control"
@@ -206,8 +206,8 @@
                   <small class="form-text text-muted"
                     >Ingresa el nombre del país </small
                   >
-                </div>
-                  
+                </div>                 
+              </div>
               <div class="form-row justify-content-center my-4 mx-auto w-100">
                 <div class="col-3">                                  
                   <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
@@ -234,7 +234,7 @@
                   <h3 class="py-4 blue-text">
                     <i class="fas fa-globe-americas mr-3 blue-text"></i>Crear ciudad
                   </h3>               
-                  <label for="nombre">Nombre *</label>
+                  <label for="cityName">Nombre *</label>
                   <input
                     type="text"
                     class="form-control"
@@ -245,7 +245,7 @@
                     >Ingresa el nombre de la ciudad </small
                   >
                 </div>
-                  
+              </div>  
               <div class="form-row justify-content-center my-4 mx-auto w-100">
                 <div class="col-3">                                  
                   <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
@@ -253,15 +253,14 @@
                   </button>                
                 </div>
                 <div class="col-3">                                  
-                  <button type="submit" class="btn rocket-btn w-100 my-3" id="createCountryBtn">
+                  <button type="submit" class="btn rocket-btn w-100 my-3" id="createCityBtn">
                     Crear
                   </button>                
                 </div>
               </div>
             </form>
           </div>
-        </section>
-                
+        </section>                
          <!-- seccion formulario de edición de regiones/-->
          <section class="row create-user m-auto hidden visuallyhidden index pt-5" id="edit-region-section">
           <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-edit-form"></i>          
@@ -273,19 +272,18 @@
                   <h3 class="blue-text py-4">
                     <i class="blue-text fas fa-globe-americas mr-3"></i>Editar región
                   </h3>                
-                  <label for="nombre">Nombre *</label>
+                  <label for="regionName-Edited">Nombre *</label>
                   <input
                     type="text"
                     class="form-control"
                     id="regionName-Edited"
-                    required
-                    aria-describedby="emailHelp"
+                    required                    
                   />
                   <small class="form-text text-muted"
                     >Ingresa el nuevo nombre </small
                   >
                 </div>
-                  
+              </div>                  
               <div class="form-row justify-content-center my-4 mx-auto w-100">
                 <div class="col-3">                                  
                   <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
@@ -293,7 +291,7 @@
                   </button>                
                 </div>
                 <div class="col-3">                                  
-                  <button type="submit" class="btn rocket-btn w-100 my-3" id="createCountryBtn">
+                  <button type="submit" class="btn rocket-btn w-100 my-3" id="editRegionBtn">
                     Actualizar
                   </button>                
                 </div>
@@ -312,7 +310,7 @@
                   <h3 class="py-4 blue-text">
                     <i class="fas fa-globe-americas mr-3 blue-text"></i>Editar país
                   </h3>                
-                  <label for="nombre">Nombre *</label>
+                  <label for="countryName-Edited">Nombre *</label>
                   <input
                     type="text"
                     class="form-control"
@@ -323,7 +321,7 @@
                     >Ingresa el nuevo nombre </small
                   >
                 </div>
-                  
+              </div>    
               <div class="form-row justify-content-center my-4 mx-auto w-100">
                 <div class="col-3">                                  
                   <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
@@ -350,7 +348,7 @@
                   <h3 class="py-4 blue-text">
                     <i class="fas fa-globe-americas mr-3 blue-text"></i>Editar ciudad
                   </h3>                
-                  <label for="nombre">Nombre *</label>
+                  <label for="cityName-Edited">Nombre *</label>
                   <input
                     type="text"
                     class="form-control"
@@ -361,7 +359,7 @@
                     >Ingresa el nuevo nombre </small
                   >
                 </div>
-                  
+              </div>                  
               <div class="form-row justify-content-center my-4 mx-auto w-100">
                 <div class="col-3">                                  
                   <button class="btn rocket-secondary-btn w-100 my-3" type="reset">

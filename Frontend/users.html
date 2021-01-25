@@ -122,7 +122,7 @@
             </h3>            
             <div class="form-row align-items-center justify-content-around my-2">
               <div class="col-4 px-3">              
-                <label for="nombre">Nombre *</label>
+                <label for="new-user-firstname">Nombre *</label>
                 <input
                   type="text"
                   class="form-control"
@@ -134,14 +134,14 @@
                 >
               </div>
               <div class="col-4 px-3">              
-                <label for="apellido">Apellido *</label>
+                <label for="new-user-lastname">Apellido *</label>
                 <input type="text" class="form-control .bg-dark" id="new-user-lastname" required />
                 <small class="form-text text-muted"
                   >Ingresa el apellido</small
                 >
               </div>
               <div class="col-4 px-3">              
-                <label for="email">E-mail *</label>
+                <label for="new-user-email">E-mail *</label>
                 <input
                   type="email"
                   class="form-control"
@@ -156,22 +156,23 @@
             <div class="form-row justify-content-around my-2">         
             
               <div class="col-4 px-3">
-                <label for="perfil">Perfil *</label>
+                <label for="new-user-admin">Perfil *</label>
                 <select class="form-control custom-select" id="new-user-admin" required>
+                  <option value="">&nbsp;</option>
                   <option selected value="0">Básico</option>
                   <option value="1">Administrador</option>                                  
                 </select>
                 <small class="form-text text-muted">Selecciona el tipo de usuario</small>
               </div>            
               <div class="col-4 px-3">
-                <label for="password">Password *</label>
+                <label for="new-user-password">Password *</label>
                 <input type="password" class="form-control .bg-dark" id="new-user-password" required />
                 <small id="checkPass" class="form-text text-muted"
                   >Ingresa la contraseña </small
                 >
               </div> 
               <div class="col-4 px-3">
-                <label for="password">Repetir contraseña *</label>
+                <label for="repeat-new-user-password">Repetir contraseña *</label>
                 <input type="password" class="form-control .bg-dark" id="repeat-new-user-password" required />
                 <small class="form-text text-muted">Repite la contraseña </small>            
               </div>               
@@ -202,7 +203,7 @@
             </h3>            
             <div class="form-row align-items-center justify-content-around my-2">
               <div class="col-4 px-3">              
-                <label for="nombre">Nombre</label>
+                <label for="edit-user-firstname">Nombre</label>
                 <input
                   type="text"
                   class="form-control"
@@ -213,14 +214,14 @@
                 >
               </div>
               <div class="col-4 px-3">              
-                <label for="apellido">Apellido</label>
+                <label for="edit-user-lastname">Apellido</label>
                 <input type="text" class="form-control .bg-dark" id="edit-user-lastname" />
                 <small class="form-text text-muted"
                   >Ingresa el apellido</small
                 >
               </div>
               <div class="col-4 px-3">              
-                <label for="email">E-mail</label>
+                <label for="edit-user-email">E-mail</label>
                 <input
                   type="email"
                   class="form-control"
@@ -235,22 +236,23 @@
             <div class="form-row justify-content-around my-2">         
             
               <div class="col-4 px-3">
-                <label for="perfil">Perfil</label>
-                <select class="form-control custom-select" id="edit-user-admin">
-                  <option selected value="0">Básico</option>
-                  <option value="1">Administrador</option>                                  
+                <label for="edit-user-admin">Perfil</label>
+                <select class="form-control custom-select" id="edit-user-admin" required>
+                  <option value="">&nbsp;</option>
+                  <option selected value=0>Básico</option>
+                  <option value=1>Administrador</option>                                  
                 </select>
                 <small class="form-text text-muted">Selecciona el tipo de usuario</small>
               </div>            
               <div class="col-4 px-3">
-                <label for="password">Password *</label>
+                <label for="edit-user-password">Password *</label>
                 <input type="password" class="form-control .bg-dark" id="edit-user-password" required/>
                 <small id="passError" class="form-text text-muted"
                   >Ingresa la contraseña </small
                 >
               </div> 
               <div class="col-4 px-3">
-                <label for="password">Repetir contraseña *</label>
+                <label for="repeat-edit-user-password">Repetir contraseña *</label>
                 <input type="password" class="form-control .bg-dark" id="repeat-edit-user-password" required />
                 <small class="form-text text-muted">Repite la contraseña </small>            
               </div> 

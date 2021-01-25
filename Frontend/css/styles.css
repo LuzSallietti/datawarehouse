@@ -467,7 +467,7 @@ ul li, #myUL li {
   background-color: #C62E65 !important;
   color: #fff;
   font-weight: 500;
-  font: "Montserrat", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .error-header span {
@@ -479,7 +479,7 @@ ul li, #myUL li {
   background-color: #03045E !important;
   color: #fff;
   font-weight: 500;
-  font: "Montserrat", sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .success-header span {

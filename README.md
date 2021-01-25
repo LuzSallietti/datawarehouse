@@ -60,19 +60,20 @@ En la tabla **channels** se crearán seis registros, correspondientes a los posi
 * Asignar a la base de datos el mismo usuario y password establecidos en las variables de entorno mysql_user y mysql_pass (en el archivo .env antes creado). 
 
 
-#### 4 - Iniciar el servidor
+#### 5 - Iniciar el servidor
 Abrir el archivo en /Backend/app.js desde node
 ```bash
 node app.js
 ```
 
 ## Login y navegación
-Abrir el archivo index.html desde el navegador web y ejecutar el acceso con las credenciales ya creadas en la base de datos, con privilegio de administrador (usuario: admin@rocket.com / password: acamica).
+Abrir el archivo /Frontend/index.html desde el navegador web y ejecutar el acceso con las credenciales ya creadas en la base de datos, con privilegio de administrador (usuario: admin@rocket.com / password: acamica).
+*En la sección Usuarios se podrán consultar, crear, actualizar y eliminar usuarios del sistema, asignándoles pefil de usuario administrador o usuario básico.
+*En la sección Región/Ciudad se podrán crear, consultar, actualizar y eliminar regiones, países y ciudades.
+*En la sección Compañías se podrán crear, consultar, actualizar y eliminar compañías.
+*Una vez trabajadas las anteriores secciones, en la sección Contactos se crearán, consultarán, actualizarán y eliminarán (de forma individual o masiva), los contactos.
 
 ## Extra- Consulta de documentación
 
 Abrir el archivo delilah.yaml y copiar su contenido en [Swagger](https://editor.swagger.io/#) o abrirlo en el editor de código.
-Permite acceder a los endpoints y métodos disponibles, junto con la información necesaria para hacer uso de los mismos.
-
-## Extra - Testeo
-Testear los endpoints documentados en Swagger desde Postman para poder hacer uso de la API y base de datos generadas.
+Permite conocer los endpoints y servicios desarrollados, junto con la información necesaria para hacer uso de los mismos.

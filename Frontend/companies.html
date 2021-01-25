@@ -39,7 +39,7 @@
   </header>
   <main>
     <!-- Modal Error -->
-    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header error-header">
@@ -168,16 +168,17 @@
               <small class="form-text text-muted">Ingresa el teléfono</small>
             </div>
             <div class="col-4 px-3">
-              <label for="new_company_country">País *</label>
+              <label for="select_db_countries">País *</label>
               <select class="form-control custom-select" id="select_db_countries" required>
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!-- resultados de la BD -->
               </select>
               <small class="form-text text-muted">Despliega las opciones y elige un país</small>
             </div>
             <div class="col-4 px-3">
-              <label for="new_company_city">Ciudad *</label>
-              <select class="form-control custom-select" id="select_db_cities" required>                
+              <label for="select_db_cities">Ciudad *</label>
+              <select class="form-control custom-select" id="select_db_cities" required>
+                <option value="">&nbsp;</option>                
                 <!-- resultados de la BD -->
               </select>
               <small class="form-text text-muted">Despliega las opciones y elige una ciudad</small>
@@ -235,19 +236,20 @@
               </small>
             </div>
             <div class="col-4 px-3">
-              <label for="edited-company-country">País *</label>
+              <label for="edit-select_db_countries">País *</label>
               <select class="form-control custom-select" id="edit-select_db_countries" required>
-                <option></option>
-                <!----resultados de la BD -->              
+                <option value="">&nbsp;</option>
+                <!-- resultados de la BD -->              
               </select>
-              <small id="emailHelp" class="form-text text-muted">Despliega las opciones y elige un país</small>
+              <small class="form-text text-muted">Despliega las opciones y elige un país</small>
             </div>
             <div class="col-4 px-3">
-              <label for="edited-company-city">Ciudad *</label>
+              <label for="edit-select_db_cities">Ciudad *</label>
               <select class="form-control custom-select" id="edit-select_db_cities" required>
-                <!----resultados de la BD -->                
+                <option value="">&nbsp;</option>
+                <!-- resultados de la BD -->                
               </select>
-              <small id="emailHelp" class="form-text text-muted">Despliega las opciones y elige una ciudad</small>
+              <small class="form-text text-muted">Despliega las opciones y elige una ciudad</small>
             </div>
           </div>
           <div class="form-row justify-content-end my-4">

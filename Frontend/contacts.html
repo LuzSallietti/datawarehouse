@@ -117,7 +117,7 @@
           <div class="form-row align-items-center justify-content-start my-2">
             <label for="search-interesting">Interés</label>
             <select class="form-control custom-select" id="search-interesting">
-              <option></option>
+              <option value="">&nbsp;</option>
               <option value = "0">0%</option>
               <option value = "25">25%</option>
               <option value = "50">50%</option>
@@ -239,14 +239,14 @@
               <small class="form-text text-muted">Detalla el puesto laboral</small>
             </div>
             <div class="col-3 px-3">
-              <label for="email">E-mail *</label>
-              <input type="new_contactEmail" class="form-control" id="new_contactEmail" required />
+              <label for="new_contactEmail">E-mail *</label>
+              <input type="email" class="form-control" id="new_contactEmail" placeholder = "ejemplo@email.com" required />
               <small class="form-text text-muted">Ingresa el email</small>
             </div>
             <div class="col-2 px-3">
               <label for="new_contactCompany">Compañía *</label>
               <select class="form-control custom-select" id="new_contactCompany" required>
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!--resultados de la BD-->
               </select>
               <small class="form-text text-muted">Despliega y elige la empresa</small>
@@ -256,7 +256,7 @@
             <div class="col-2 px-3">
               <label for="new_contactRegion">Región *</label>
               <select class="form-control custom-select" id="new_contactRegion" required>
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!--filled with DB-->
               </select>
               <small class="form-text text-muted">Despliega y elige una región</small>
@@ -264,7 +264,7 @@
             <div class="col-2 px-3">
               <label for="new_contactCountry">País *</label>
               <select class="form-control custom-select" id="new_contactCountry" required>
-                <option> </option>
+                <option value="">&nbsp;</option>
                 <!-- resultados de la BD-->
               </select>
               <small class="form-text text-muted">Despliega y elige un país</small>
@@ -272,7 +272,7 @@
             <div class="col-2 px-3">
               <label for="new_contactCity">Ciudad *</label>
               <select class="form-control custom-select" id="new_contactCity" required>
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!--resultados de la BD-->
               </select>
               <small class="form-text text-muted">Despliega y elige una ciudad</small>
@@ -284,8 +284,8 @@
             </div>
             <div class="col-3 px-3">
               <label for="gradoInteres">Interés *</label>
-              <input type="range" class="form-control-range" id="gradoInteres" name="gradoInteres" min="0%"
-                max="100%" step="25" required />
+              <input type="range" class="form-control-range" id="gradoInteres" name="gradoInteres" min="0"
+                max="100" step="25"/>
               <span class="percentage pt-2" id="grado-value"></span>
               <small class="form-text text-muted">Determina un porcentaje de interés</small>
             </div>
@@ -345,7 +345,7 @@
             <div class="col-2 px-3">
               <label for="edit_contact_company">Compañía</label>
               <select class="form-control custom-select" id="edit_contact_company">                
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!-- resultados de la BD-->
               </select>
               <small class="form-text text-muted">Despliega y elige la empresa</small>
@@ -355,7 +355,7 @@
             <div class="col-2 px-3">
               <label for="edit_contact_region">Región</label>
               <select class="form-control custom-select" id="edit_contact_region">
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!--resultados de la BD-->
               </select>
               <small class="form-text text-muted">Despliega y elige una región</small>
@@ -363,7 +363,7 @@
             <div class="col-2 px-3">
               <label for="edit_contact_country">País</label>
               <select class="form-control custom-select" id="edit_contact_country">
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!--resultados de la BD-->
               </select>
               <small class="form-text text-muted">Despliega y elige un país</small>
@@ -371,7 +371,7 @@
             <div class="col-2 px-3">
               <label for="edit_contact_city">Ciudad</label>
               <select class="form-control custom-select" id="edit_contact_city">
-                <option></option>
+                <option value="">&nbsp;</option>
                 <!--resultados de la BD-->
               </select>
               <small class="form-text text-muted">Despliega y elige una ciudad</small>
@@ -384,7 +384,7 @@
             <div class="col-3 px-3">
               <label for="edit_contact_gradoInteres">Interés</label>
               <input type="range" class="form-control-range" id="edit_contact_gradoInteres"
-                name="edit_contact_gradoInteres" min="0%" max="100%" step="25" />
+                name="edit_contact_gradoInteres" min="0" max="100" step="25" />
               <span class="percentage pt-2" id="edit_grado-value"></span>
               <small class="form-text text-muted">Determina un porcentaje de interés</small>
             </div>
