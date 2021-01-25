@@ -1,0 +1,148 @@
+.close-create-contact-icon {
+    top:5%;
+    left: 97%;
+    z-index: 10;
+    font-size: 24px;
+}
+.highlight{
+    border: 5px solid $pacific;
+    border-radius: 15px;   
+}
+.white-text{
+    color: $white;
+}
+.percentage{
+    color: $bootstrapGrey;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.custom-range::-webkit-slider-thumb {
+    background: $green;  
+}
+  
+.custom-range::-moz-range-thumb {
+    background: $green;    
+}
+  
+.custom-range::-ms-thumb {
+    background: $green;    
+}
+.search-field{
+    border: 1px solid $pacific;
+    border-radius: 5px;
+    padding-right: 0;
+}
+.search-form {
+background-color: $pacific;
+position: absolute;
+top: 42px;
+z-index: 2;
+}
+.search-btn{
+    background-color: $pacific;
+    color: $white;
+    border-radius: 5px;
+    border: 2px solid $pacific;
+    width: 45px;
+    height: 98%;    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;    
+}
+.show-search{
+    background-color: $white;
+    color: $pacific;
+    border-radius: 5px;
+    width: 45px;
+    height: 98%;    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;  
+}
+.display-none{
+    display: none;
+}
+.delete-contact-modal{
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+.selection-div{
+    margin: 0 5% 0 5%;
+}
+.selection{    
+    background-color: $blue;
+    font-size: 13px;
+    border-radius: 5px;
+}
+.bar{
+    border: 2px solid $white;
+    border-radius: 5px;
+    height: 10px;
+}
+.interest-bar{
+    height: 100%;    
+}
+.bar-number{
+    font-weight: 500;
+    font-size: 12px;
+}
+.grade-25{
+    background-color: #47E0FF;
+    border: 1px solid #47E0FF;
+    border-radius: 5px;
+}
+.grade-50{
+    background-color: #FCBE4A;
+    border: 1px solid #FCBE4A;
+    border-radius: 5px;
+}
+.grade-75{
+    background-color: #DD9103;
+    border: 1px solid #DD9103;
+    border-radius: 5px;
+}
+.grade-100{
+    background-color: #C62E65;
+    border: 1px solid #C62E65;
+    border-radius: 5px;
+}
+.white-form{
+    background-color: $grey;
+    color: $bootstrapGrey;
+}
+.purple-text{
+    color:$purple;
+}
+.blue-text{
+    color:$blue;
+}
+.strong{
+    font-weight: 500;
+}
+.smaller-text{
+    font-size: 14px;
+}
+.index{
+    z-index: -300;
+}
+.error-header{
+    background-color: $red !important;
+    color: $white;
+    font-weight: 500;
+    font: $montserrat !important;
+    span {
+        color: $white;
+        font-weight: 500;
+    }
+}
+.success-header{
+    background-color: $blue !important;
+    color: $white;
+    font-weight: 500;
+    font: $montserrat !important;
+    span {
+        color:$white;
+        font-weight: 500;
+    }
+}

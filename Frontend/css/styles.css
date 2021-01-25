@@ -1,0 +1,489 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  background-color: transparent;
+}
+
+.anim path {
+  stroke-width: 1;
+}
+
+form {
+  width: 60%;
+  padding: 50px;
+  background-color: rgba(0, 170, 204, 0.9);
+  color: #fff;
+  border-radius: 7%;
+}
+
+span {
+  width: 100%;
+  text-align: center;
+}
+
+.rocket-btn {
+  background-color: #580476;
+  color: #fff;
+  font-weight: 500;
+  -webkit-transition: all 0.25s ease-in;
+  transition: all 0.25s ease-in;
+}
+
+.rocket-btn:hover {
+  color: white;
+  opacity: 65%;
+}
+
+.rocket-secondary-btn {
+  background-color: #fff;
+  border: 2px solid;
+  font-weight: 500;
+  color: #580476;
+  -webkit-transition: all 0.25s ease-in;
+  transition: all 0.25s ease-in;
+}
+
+.rocket-secondary-btn:hover {
+  color: #580476;
+  opacity: 65%;
+}
+
+.nav-links {
+  text-decoration: none !important;
+  text-transform: uppercase;
+  color: rgba(3, 4, 94, 0.7);
+  font-weight: 600;
+  -webkit-transition: color 0.25s ease-in;
+  transition: color 0.25s ease-in;
+}
+
+.nav-links:hover {
+  color: #03045E;
+  font-weight: 800;
+}
+
+.is-active {
+  color: #03045E;
+  font-weight: 800;
+  -webkit-transition: color 0.25s ease-in;
+  transition: color 0.25s ease-in;
+  border-bottom: 3px solid #03045E;
+}
+
+.is-active:hover {
+  color: #03045E;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visuallyhidden {
+  opacity: 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.bk-img {
+  z-index: -10;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.logo {
+  width: 10%;
+}
+
+label {
+  font-weight: 500;
+}
+
+.error-number {
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.bg-plain {
+  background-image: none;
+}
+
+.table-header {
+  margin: 0px 5% 0 5%;
+  padding: 16px 8px;
+  border-top: 2px solid #03045E;
+  background-color: #00AACC;
+}
+
+.results {
+  padding: 12px 6px;
+  margin: 0 5%;
+  background-color: #E3F2FD;
+  color: #495057;
+  border-bottom: 3px solid #fff;
+}
+
+.create-user {
+  height: 100vh;
+  width: 98vw;
+  position: absolute;
+  top: 0px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background-color: #fff;
+}
+
+.close-icon {
+  position: absolute;
+  left: 83%;
+  top: 25px;
+  z-index: 10;
+  font-size: 24px;
+}
+
+.actions-icons:hover {
+  color: #580476;
+}
+
+.delete-modals {
+  background-color: #00AACC;
+  position: absolute;
+  top: 25%;
+}
+
+.regions-header {
+  margin: 0px 5% 0 5%;
+  padding: 16px 8px;
+  border-top: 2px solid #03045E;
+  background-color: #E3F2FD;
+}
+
+/* Remove default bullets */
+ul, #myUL {
+  list-style-type: none;
+  color: #495057;
+}
+
+ul li, #myUL li {
+  border-bottom: 3px solid #fff;
+}
+
+/* Remove margins and padding from the parent ul */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  /* Prevent text selection */
+  font-weight: 500;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: #00AACC;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}
+
+.regions-btn {
+  background-color: #00AACC;
+  color: #fff;
+  font-size: 12px;
+  -webkit-transition: all 0.25s ease-in;
+  transition: all 0.25s ease-in;
+}
+
+.regions-btn:hover {
+  color: white;
+  opacity: 65%;
+}
+
+.country {
+  color: #495057;
+  font-size: 15px;
+  background-color: #C6E5FB;
+  font-weight: 500;
+}
+
+.reg-actions-btn {
+  border-radius: 4px;
+  color: #495057;
+  font-size: 12px;
+  -webkit-transition: all 0.25s ease-in;
+  transition: all 0.25s ease-in;
+}
+
+.reg-actions-btn:hover {
+  color: #580476;
+  opacity: 65%;
+}
+
+.city {
+  color: #495057;
+  font-size: 15px;
+  border-bottom: none;
+  background-color: #B3DCFA;
+}
+
+.caret-blue {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  /* Prevent text selection */
+  font-weight: 500;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret-blue::before {
+  content: "\25B6";
+  color: #00AACC;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.alert-msg {
+  color: #fff;
+}
+
+.alert-icon {
+  font-size: 1.5rem;
+}
+
+.close-create-contact-icon {
+  top: 5%;
+  left: 97%;
+  z-index: 10;
+  font-size: 24px;
+}
+
+.highlight {
+  border: 5px solid #00AACC;
+  border-radius: 15px;
+}
+
+.white-text {
+  color: #fff;
+}
+
+.percentage {
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.custom-range::-webkit-slider-thumb {
+  background: #2F9C95;
+}
+
+.custom-range::-moz-range-thumb {
+  background: #2F9C95;
+}
+
+.custom-range::-ms-thumb {
+  background: #2F9C95;
+}
+
+.search-field {
+  border: 1px solid #00AACC;
+  border-radius: 5px;
+  padding-right: 0;
+}
+
+.search-form {
+  background-color: #00AACC;
+  position: absolute;
+  top: 42px;
+  z-index: 2;
+}
+
+.search-btn {
+  background-color: #00AACC;
+  color: #fff;
+  border-radius: 5px;
+  border: 2px solid #00AACC;
+  width: 45px;
+  height: 98%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.show-search {
+  background-color: #fff;
+  color: #00AACC;
+  border-radius: 5px;
+  width: 45px;
+  height: 98%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.display-none {
+  display: none;
+}
+
+.delete-contact-modal {
+  z-index: 3;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.selection-div {
+  margin: 0 5% 0 5%;
+}
+
+.selection {
+  background-color: #03045E;
+  font-size: 13px;
+  border-radius: 5px;
+}
+
+.bar {
+  border: 2px solid #fff;
+  border-radius: 5px;
+  height: 10px;
+}
+
+.interest-bar {
+  height: 100%;
+}
+
+.bar-number {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.grade-25 {
+  background-color: #47E0FF;
+  border: 1px solid #47E0FF;
+  border-radius: 5px;
+}
+
+.grade-50 {
+  background-color: #FCBE4A;
+  border: 1px solid #FCBE4A;
+  border-radius: 5px;
+}
+
+.grade-75 {
+  background-color: #DD9103;
+  border: 1px solid #DD9103;
+  border-radius: 5px;
+}
+
+.grade-100 {
+  background-color: #C62E65;
+  border: 1px solid #C62E65;
+  border-radius: 5px;
+}
+
+.white-form {
+  background-color: #E3F2FD;
+  color: #495057;
+}
+
+.purple-text {
+  color: #580476;
+}
+
+.blue-text {
+  color: #03045E;
+}
+
+.strong {
+  font-weight: 500;
+}
+
+.smaller-text {
+  font-size: 14px;
+}
+
+.index {
+  z-index: -300;
+}
+
+.error-header {
+  background-color: #C62E65 !important;
+  color: #fff;
+  font-weight: 500;
+  font: "Montserrat", sans-serif !important;
+}
+
+.error-header span {
+  color: #fff;
+  font-weight: 500;
+}
+
+.success-header {
+  background-color: #03045E !important;
+  color: #fff;
+  font-weight: 500;
+  font: "Montserrat", sans-serif !important;
+}
+
+.success-header span {
+  color: #fff;
+  font-weight: 500;
+}
+/*# sourceMappingURL=styles.css.map */

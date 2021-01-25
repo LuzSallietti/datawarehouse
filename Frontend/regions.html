@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+      src="https://kit.fontawesome.com/2b49350120.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css" type="text/css" />
+    <title>Regiones</title>
+</head>
+<body class="bg-plain">
+    <header>
+        <nav class="navbar">
+          <a class="navbar-brand m-3 d-flex align-items-center justify-content-center" href="#">
+            <img class="w-75 h-auto" src="./img/logo-navy.png" alt="logo" />
+          </a>
+          <div class="w-50">
+            <ul
+              class="navbar-nav d-flex flex-row flex-nowrap justify-content-around"
+            >
+              <li class="">
+                <a class="nav-links" href="contacts.html">Contactos</a>
+              </li>
+              <li class="">
+                <a class="nav-links" href="companies.html">Compañías</a>
+              </li>
+              <li class="" id="users-page">
+                <a class="nav-links" href="users.html">Usuarios</a>
+              </li>
+              <li class="">
+                <a class="nav-links is-active" href="#">Región/Ciudad</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <main>
+          <!-- Modal acción Exitosa-->
+        <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header success-header">
+                <h5 class="modal-title" id="confirmationModalLabel">You rocked it!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeConfirmationModal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p> Acción ejecutada con éxito </p>
+              </div>            
+            </div>
+          </div>
+        </div>
+         <!-- Modal Error -->
+         <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header error-header">
+                <h5 class="modal-title" id="rttotModalLabel">Houston, we have a problem :(</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeErrorModal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p> Este elemento posee entidades relacionadas (países y/o ciudades, o contactos).<br>No puedes eliminarlo sin borrar antes cada una de esas entidades.</p>
+              </div>            
+            </div>
+          </div>
+        </div>
+        <section class="row mx-auto mt-4 mb-5"> <!--BOTONES-->
+            <div class="col-6">              
+            </div>
+            <div class="col-1 d-flex justify-content-end align-items-center">        
+            </div>            
+            <div class="col-3 m-auto d-flex justify-content-start align-items-center">
+              <!--crear region-->
+              <button class="btn rocket-btn py-2 create-region"><i class="fas fa-globe-americas mr-2"></i>Nueva región</button>
+            </div>          
+          </section>
+          <!-- modal confirmacion Eliminar Región -->
+        <section class="row position-relative mx-auto justify-content-center hidden visuallyhidden index delete-contact-modal" id="deleteRegion-modal">
+          <i class="purple-text fas fa-times-circle close-icon" id="close-alert-msg"></i>
+          
+          <div class="delete-modals col-9 d-flex align-items-center justify-content-center flex-row flex-wrap py-5">
+            <i class="fas fa-exclamation-triangle alert-msg alert-icon py-3"></i>            
+            <p class="alert-msg w-100 text-center">Esta acción eliminará definitivamente esta región.<br>¿Estás seguro?</p>     
+              
+                <div class="col-3 px-3">                                  
+                  <button type="submit" class="btn rocket-secondary-btn w-100 my-3">
+                    Eliminar
+                  </button>                
+                </div>
+                <div class="col-3 px-3">                                  
+                  <button class="btn rocket-btn w-100 my-3" id="deleteElement">
+                    Cancelar
+                  </button>                
+                </div>                       
+          </div>
+        </section>
+        <!-- modal confirmación Eliminar País -->
+        <section class="row position-relative mx-auto justify-content-center hidden visuallyhidden index delete-contact-modal" id="deleteCountry-modal">
+          <i class="purple-text fas fa-times-circle close-icon" id="discard-deleteCountry"></i>
+          
+          <div class="delete-modals col-9 d-flex align-items-center justify-content-center flex-row flex-wrap py-5">
+            <i class="fas fa-exclamation-triangle alert-msg alert-icon py-3"></i>            
+            <p class="alert-msg w-100 text-center">Esta acción eliminará definitivamente este país.<br>¿Estás seguro?</p>     
+              
+                <div class="col-3 px-3">                                  
+                  <button type="submit" class="btn rocket-secondary-btn w-100 my-3">
+                    Eliminar
+                  </button>                
+                </div>
+                <div class="col-3 px-3">                                  
+                  <button class="btn rocket-btn w-100 my-3" id="cancelDeleteCountry">
+                    Cancelar
+                  </button>                
+                </div>                       
+          </div>
+        </section>
+        <!-- Modal confirmación Eliminar Ciudad -->
+        <section class="row position-relative mx-auto justify-content-center hidden visuallyhidden index delete-contact-modal" id="deleteCity-modal">
+          <i class="purple-text fas fa-times-circle close-icon" id="discard-deleteCity"></i>
+          
+          <div class="delete-modals col-9 d-flex align-items-center justify-content-center flex-row flex-wrap py-5">
+            <i class="fas fa-exclamation-triangle alert-msg alert-icon py-3"></i>            
+            <p class="alert-msg w-100 text-center">Esta acción eliminará definitivamente esta ciudad.<br>¿Estás seguro?</p>     
+              
+                <div class="col-3 px-3">                                  
+                  <button type="submit" class="btn rocket-secondary-btn w-100 my-3">
+                    Eliminar
+                  </button>                
+                </div>
+                <div class="col-3 px-3">                                  
+                  <button class="btn rocket-btn w-100 my-3" id="cancelDeleteCity">
+                    Cancelar
+                  </button>                
+                </div>                       
+          </div>
+        </section>               
+          <section class="row regions-header justify-content-start align-items-center" id="regionsList">
+            <!-- resultados de la BD -->
+          </section>
+          <!-- formulario de creación de regiones-->
+        <section class="row create-user m-auto hidden visuallyhidden index pt-5" id="new-region-section">
+          <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-form"></i>          
+          <div class="col-9 d-flex align-items-start justify-content-center mx-auto">               
+            <!--form-->
+            <form class="m-auto w-100 white-form" id="createRegionForm">                          
+              <div class="form-row align-items-center justify-content-center mx-auto w-100">                 
+                <div class="col-4 mx-auto">
+                  <h3 class="blue-text py-4">
+                    <i class="blue-text fas fa-globe-americas mr-3"></i>Crear región
+                  </h3>              
+                  <label for="nombre">Nombre *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="regionName"
+                    required                    
+                  />
+                  <small class="form-text text-muted"
+                    >Ingresa el nombre de la región </small
+                  >
+                </div>
+                  
+              <div class="form-row justify-content-center my-4 mx-auto w-100">
+                <div class="col-3">                                  
+                  <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
+                    Limpiar
+                  </button>                
+                </div>
+                <div class="col-3">                                  
+                  <button type="submit" class="btn rocket-btn w-100 my-3" id="createRegionBtn">
+                    Crear
+                  </button>                
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+        <!-- formulario de creación de países -->
+        <section class="row create-user m-auto hidden visuallyhidden index pt-5" id="new-country-section">
+          <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-country-form"></i>          
+          <div class="col-9 d-flex align-items-start justify-content-center mx-auto">               
+            <!-- form-->
+            <form class="m-auto w-100 white-form" id="createCountryForm">            
+              <div class="form-row align-items-center justify-content-center mx-auto w-100">
+                <div class="col-4 mx-auto">
+                  <h3 class="py-4 blue-text">
+                    <i class="fas fa-globe-americas mr-3 blue-text"></i>Crear país
+                  </h3>               
+                  <label for="nombre">Nombre *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="countryName"
+                    required                    
+                  />
+                  <small class="form-text text-muted"
+                    >Ingresa el nombre del país </small
+                  >
+                </div>
+                  
+              <div class="form-row justify-content-center my-4 mx-auto w-100">
+                <div class="col-3">                                  
+                  <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
+                    Limpiar
+                  </button>                
+                </div>
+                <div class="col-3">                                  
+                  <button type="submit" class="btn rocket-btn w-100 my-3" id="createCountryBtn">
+                    Crear
+                  </button>                
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+        <!-- formulario de creación de ciudades -->
+        <section class="row create-user m-auto hidden visuallyhidden index pt-5" id="new-city-section">
+          <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-city-form"></i>          
+          <div class="col-9 d-flex align-items-start justify-content-center mx-auto">               
+            <!--form-->
+            <form class="m-auto w-100 white-form" id="createCityForm">            
+              <div class="form-row align-items-center justify-content-center mx-auto w-100">
+                <div class="col-4 mx-auto">
+                  <h3 class="py-4 blue-text">
+                    <i class="fas fa-globe-americas mr-3 blue-text"></i>Crear ciudad
+                  </h3>               
+                  <label for="nombre">Nombre *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cityName"
+                    required                    
+                  />
+                  <small class="form-text text-muted"
+                    >Ingresa el nombre de la ciudad </small
+                  >
+                </div>
+                  
+              <div class="form-row justify-content-center my-4 mx-auto w-100">
+                <div class="col-3">                                  
+                  <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
+                    Limpiar
+                  </button>                
+                </div>
+                <div class="col-3">                                  
+                  <button type="submit" class="btn rocket-btn w-100 my-3" id="createCountryBtn">
+                    Crear
+                  </button>                
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+                
+         <!-- seccion formulario de edición de regiones/-->
+         <section class="row create-user m-auto hidden visuallyhidden index pt-5" id="edit-region-section">
+          <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-edit-form"></i>          
+          <div class="col-9 d-flex align-items-start justify-content-center mx-auto">               
+            <!-- form-->
+            <form class="m-auto w-100 white-form" id="editRegionForm">                         
+              <div class="form-row align-items-center justify-content-center mx-auto w-100">
+                <div class="col-4 mx-auto">
+                  <h3 class="blue-text py-4">
+                    <i class="blue-text fas fa-globe-americas mr-3"></i>Editar región
+                  </h3>                
+                  <label for="nombre">Nombre *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="regionName-Edited"
+                    required
+                    aria-describedby="emailHelp"
+                  />
+                  <small class="form-text text-muted"
+                    >Ingresa el nuevo nombre </small
+                  >
+                </div>
+                  
+              <div class="form-row justify-content-center my-4 mx-auto w-100">
+                <div class="col-3">                                  
+                  <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
+                    Limpiar
+                  </button>                
+                </div>
+                <div class="col-3">                                  
+                  <button type="submit" class="btn rocket-btn w-100 my-3" id="createCountryBtn">
+                    Actualizar
+                  </button>                
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+        <!-- seccion formulario de edición de paises -->
+        <section class="row create-user m-auto hidden visuallyhidden index pt-5" id="edit-country-section">
+          <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-editCountry-form"></i>          
+          <div class="col-9 d-flex align-items-start justify-content-center mx-auto">               
+            <!-- form-->
+            <form class="m-auto w-100 white-form" id="editCountryForm">            
+              <div class="form-row align-items-center justify-content-center mx-auto w-100">
+                <div class="col-4 mx-auto">
+                  <h3 class="py-4 blue-text">
+                    <i class="fas fa-globe-americas mr-3 blue-text"></i>Editar país
+                  </h3>                
+                  <label for="nombre">Nombre *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="countryName-Edited"
+                    required                    
+                  />
+                  <small class="form-text text-muted"
+                    >Ingresa el nuevo nombre </small
+                  >
+                </div>
+                  
+              <div class="form-row justify-content-center my-4 mx-auto w-100">
+                <div class="col-3">                                  
+                  <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
+                    Limpiar
+                  </button>                
+                </div>
+                <div class="col-3">                                  
+                  <button type="submit" class="btn rocket-btn w-100 my-3">
+                    Actualizar
+                  </button>                
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+        <!-- seccion formulario de edición de ciudades -->
+        <section class="row create-user m-auto hidden visuallyhidden index pt-5" id="edit-city-section">
+          <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-editCity-form"></i>          
+          <div class="col-9 d-flex align-items-start justify-content-center mx-auto">               
+            <!-- form-->
+            <form class="m-auto w-100 white-form" id="editCityForm">            
+              <div class="form-row align-items-center justify-content-center mx-auto w-100">
+                <div class="col-4 mx-auto">
+                  <h3 class="py-4 blue-text">
+                    <i class="fas fa-globe-americas mr-3 blue-text"></i>Editar ciudad
+                  </h3>                
+                  <label for="nombre">Nombre *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cityName-Edited"
+                    required                    
+                  />
+                  <small class="form-text text-muted"
+                    >Ingresa el nuevo nombre </small
+                  >
+                </div>
+                  
+              <div class="form-row justify-content-center my-4 mx-auto w-100">
+                <div class="col-3">                                  
+                  <button class="btn rocket-secondary-btn w-100 my-3" type="reset">
+                    Limpiar
+                  </button>                
+                </div>
+                <div class="col-3">                                  
+                  <button type="submit" class="btn rocket-btn w-100 my-3">
+                    Actualizar
+                  </button>                
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>  
+      
+  <!--JS Bootstrap-->
+  <script src="./js/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>   
+  <!-- functions-->
+  <script src="./js/hierarchy-tree.js"></script>
+  <script src="./js/display_animation.js"></script>
+  <script src="./js/requests/verify_role.js"></script>
+  <script src="./js/regions.js"></script> 
+    
+</body>
+</html>

@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+@import "./partials/login";
+@import "./partials/usuarios";
+@import "./partials/regiones";
+@import "./partials/contactos";

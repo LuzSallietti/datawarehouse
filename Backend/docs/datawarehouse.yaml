@@ -1,0 +1,1286 @@
+openapi: 3.0.0
+info:
+  title: "Data Warehouse"
+  description: "Desarrollo de una herramienta permite a una compañía de Marketing administrar todos los contactos de sus clientes para sus campañas. La base de datos de los contactos incluye sus datos personales, sus preferencias, canales de contacto, lugar o compañía donde trabajan, y lugar donde viven."
+  version: "1.0"
+servers:
+  - url: http://localhost:3000/v1
+paths:
+  /login:
+    post:
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Ingreso al sistema"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Login"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve el token y el identificador de rol requeridos para el acceso a los servicios" 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDgyMTUzNjEsImV4cCI6MTYwODMwMTc2MX0.jiNSmxA2-J126jj9WYq1_8c-ZBQs7L8TrMRSOWsy2Co"
+                  role:
+                    type: integer
+        "400":
+          description: "Incorrect username or password, or not registered user"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /regiones:
+    post:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Crear nueva región"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRegion"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve el id de registro de la nueva región" 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "Succesfully added"
+                  id:
+                    type: integer
+                    format: int64
+                    example: 3
+        "400":
+          description: "Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    get:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Listar todas las regiones"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a las regiones almacenadas en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetRegions"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+      
+  /regiones/{idRegion}:
+    put:
+      security:
+        - authorization: []
+      tags:
+        - "usuario"
+        - "administrador"
+      summary: "Actualizar una región por su id"
+      parameters:
+      - in: path
+        name: idRegion   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de región almacenado en la base de datos"
+      requestBody:
+        required: true
+        description: "El request debe contener un objeto con la propiedad name y el valor correspondiente a actualizar en la base de datos."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRegion"
+      responses:
+        "200":
+          description: "Succesfully updated"
+        "400":
+          description: "Parameter missing / Invalid parameter / Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+      
+    delete:
+     security:
+      - authorization: []
+     tags:
+      - "usuario"
+      - "administrador"
+     summary: "Eliminar una región por su id"
+     parameters:
+      - in: path
+        name: idRegion   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de región almacenado en la base de datos"
+     responses:
+        "200":
+          description: "Succesfully deleted"
+        "400":
+          description: "Parameter missing / Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /paises:
+    post:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Crear nuevo país"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCountry"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve el id de registro del nuevo país" 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "Succesfully added"
+                  id:
+                    type: integer
+                    format: int64
+                    example: 3
+        "400":
+          description: "Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    get:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Listar todos los países"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a los países almacenados en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCountries"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /paises/{idPais}:
+    put:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Actualizar un país por su id"
+      parameters:
+      - in: path
+        name: idPais   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de país almacenado en la base de datos"
+      requestBody:
+        required: true
+        description: "El request debe contener un objeto con la propiedades válidas y sus valores a actualizar en la base de datos."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCountry"
+      responses:
+        "200":
+          description: "Succesfully updated"
+        "400":
+          description: "Parameter missing / Invalid parameter / Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Eliminar un país por su id"
+      parameters:
+      - in: path
+        name: idPais  
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de país almacenado en la base de datos"
+      responses:
+        "200":
+          description: "Succesfully deleted"
+        "400":
+          description: "Parameter missing / Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /ciudades:
+    post:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Crear nueva ciudad"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCity"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve el id de registro de la nueva ciudad" 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "Succesfully added"
+                  id:
+                    type: integer
+                    format: int64
+                    example: 3
+        "400":
+          description: "Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    get:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Listar todas las ciudades"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a las ciudades almacenadas en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCities"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /ciudades/{idCiudad}:
+    put:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Actualizar una ciudad por su id"
+      parameters:
+      - in: path
+        name: idCiudad   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de país almacenado en la base de datos"
+      requestBody:
+        required: true
+        description: "El request debe contener un objeto con la propiedades válidas y sus valores a actualizar en la base de datos."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCity"
+      responses:
+        "200":
+          description: "Succesfully updated"
+        "400":
+          description: "Parameter missing / Invalid parameter / Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Eliminar una ciudad por su id"
+      parameters:
+      - in: path
+        name: idCiudad  
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de ciudad almacenado en la base de datos"
+      responses:
+        "200":
+          description: "Succesfully deleted"
+        "400":
+          description: "Parameter missing / Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  
+  /contactos:
+    post:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Crear nuevo contacto"
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateContact"
+      responses:
+          "200":
+            description: "Operación exitosa. Devuelve el id de registro del nuevo contacto" 
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    msg:
+                      type: string
+                      example: "Succesfully added"
+                    id:
+                      type: integer
+                      format: int64
+                      example: 3
+          "400":
+            description: "Malformed body request"
+          "401":
+            description: "Unauthorized action"
+          "500":
+            description: "Server or database error description"
+            content:
+              application/json:
+                schema:
+                  type: object
+    get:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Listar todos los contactos"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a los contactos registrados en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAllContacts"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /contactos/{idContacto}:
+    put:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Actualizar un contacto por su id"
+      parameters:
+      - in: path
+        name: idContacto   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de contacto almacenado en la base de datos"
+      requestBody:
+        required: true
+        description: "El request debe contener un objeto con las propiedades y valores necesarios para actualizar el contacto en la base de datos."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateContact"
+      responses:
+        "200":
+          description: "Succesfully updated"
+        "400":
+          description: "Malformed body request / Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Eliminar un contacto por su id"
+      parameters:
+      - in: path
+        name: idContacto   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de contacto a eliminar almacenado en la base de datos"
+      responses:
+        "200":
+          description: "Succesfully deleted"
+        "400":
+          description: "Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /contactos/filtrar:
+    get:
+      security:
+        - authorization: []
+      tags:
+      - "administrador"
+      - "usuario"
+      summary: "Obtener información de contactos según criterios de búsqueda opcionales"
+      parameters:
+        - in: query
+          name: firstname
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: lastname
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: job_title
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: company_id
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: city_id
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: fav_channel
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: interesting
+          schema:
+            type: integer
+          required: false
+      responses:
+          "200":
+            description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a los contactos registrados en la base de datos que coinciden con los parámetros de búsqueda." 
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/GetAllContacts"
+          "401":
+            description: "Unauthorized action"
+          "500":
+            description: "Server or database error description"
+            content:
+              application/json:
+                schema:
+                  type: object
+    
+    
+  /usuarios:
+    post:
+      security:
+        - authorization: []
+      tags:
+      - "administrador"
+      summary: "Crear nuevo usuario"
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateUser"
+      responses:
+          "200":
+            description: "Operación exitosa. Devuelve el id de registro del nuevo usuario" 
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    msg:
+                      type: string
+                      example: "Succesfully added"
+                    id:
+                      type: integer
+                      format: int64
+                      example: 3
+          "405":
+            description: "Malformed request. One or more parameters missing"
+          "401":
+            description: "Unauthorized action"
+          "500":
+            description: "Server or database error description"
+            content:
+              application/json:
+                schema:
+                  type: object
+      
+    get:
+      security:
+        - authorization: []
+      tags:
+      - "administrador"
+      summary: "Listar todos los usuarios"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a los usuarios registrados en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAllUsers"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+                
+  /usuarios/{idUsuario}:
+    put:
+     security:
+      - authorization: []
+     tags:
+      - "administrador"
+     summary: "Actualizar un usuario por su id"
+     parameters:
+      - in: path
+        name: idUsuario   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de usuario almacenado en la base de datos"
+     requestBody:
+        required: true
+        description: "El request debe contener un objeto con las propiedades y valores necesarios para actualizar el usuario en la base de datos."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUser"
+     responses:
+        "200":
+          description: "Succesfully updated"
+        "400":
+          description: "Parameter missing / Invalid parameter / Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+     security:
+      - authorization: []
+     tags:
+      - "administrador"
+     summary: "Eliminar un usuario por su id"
+     parameters:
+      - in: path
+        name: idUsuario   
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de usuario a eliminar almacenado en la base de datos"
+     responses:
+        "200":
+          description: "Succesfully deleted"
+        "405":
+          description: "Malformed request. One or more parameters missing/id doesnt exist?"
+        "400":
+          description: "Parameter missing / Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /companias:
+    post:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Crear nueva compañía"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCompany"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve el id de registro de la nueva compañia" 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "Succesfully added"
+                  id:
+                    type: integer
+                    format: int64
+                    example: 3
+        "400":
+          description: "Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    get:
+      security:
+        - authorization: []
+      tags:
+      - "usuario"
+      - "administrador"
+      summary: "Listar todas las compañías"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a las compañías almacenadas en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCompanies"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /companias/{idCompania}:
+    put:
+     security:
+      - authorization: []
+     tags:
+      - "usuario"
+      - "administrador"
+     summary: "Actualizar una compañía por su id"
+     parameters:
+     - in: path
+       name: idCompania   
+       required: true
+       schema:
+        type: integer
+        description: "valor válido del id de la compañía almacenada en la base de datos"
+     requestBody:
+      required: true
+      description: "El request debe contener un objeto con la propiedades válidas y sus valores a actualizar en la base de datos."
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreateCompany"
+     responses:
+        "200":
+          description: "Succesfully updated"
+        "400":
+          description: "Malformed body request / Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+     security:
+      - authorization: []
+     tags:
+      - "usuario"
+      - "administrador"
+     summary: "Eliminar una compañía por su id"
+     parameters:
+      - in: path
+        name: idCompania  
+        required: true
+        schema:
+          type: integer
+        description: "valor válido del id de la compañía almacenado en la base de datos"
+     responses:
+        "200":
+          description: "Succesfully deleted"
+        "400":
+          description: "Parameter missing / Invalid parameter"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object 
+  /canales:
+   get:
+    security:
+      - authorization: []
+    tags:
+      - "usuario"
+      - "administrador"
+    summary: "Listar los canales de contacto disponibles"
+    responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a los canales de contacto almacenados en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetChannels"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /canales/contacto:
+    post:
+      tags:
+      - "usuario"
+      - "administrador"
+      security:
+      - authorization: []
+      summary: "Crear nuevo canal asociado a un contacto"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateContactChannel"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve el id de registro del nuevo canal asociado al contacto" 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "Succesfully added"
+                  id:
+                    type: integer
+                    format: int64
+                    example: 3
+        "400":
+          description: "Malformed body request"
+        "401":
+          description: "Unauthorized action"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+  /canales/contacto/{idContacto}:
+    get:
+      tags:
+      - "usuario"
+      - "administrador"
+      security:
+      - authorization: []
+      summary: "Listar los canales asociados a un solo contacto "
+      parameters:
+       - in: path
+         name: idContacto   
+         required: true
+         schema:
+          type: integer
+          description: "valor válido del campo contact_id almacenado en la base de datos"
+      responses:
+        "200":
+          description: "Operación exitosa. Devuelve un array de objetos, cada uno correspondiente a los canales de contacto almacenados para un contacto en la base de datos."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetContactChannels"
+        "401":
+          description: "Unauthorized action"
+        "405":
+            description: "Malformed request. One or more parameters missing/id doesnt exist?"
+        "500":
+          description: "Server or database error description"
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      tags:
+      - "usuario"
+      - "administrador"
+      security:
+      - authorization: []
+      summary: "Actualizar un canal asociado a un contacto por su identificador en la base de datos"
+      parameters:
+       - in: path
+         name: idContacto   
+         required: true
+         schema:
+          type: integer
+          description: "valor válido del id del contacto almacenado en la base de datos"
+      requestBody:
+        required: true
+        description: "El request debe contener un objeto con la propiedades válidas y sus valores a actualizar en la base de datos."
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateContactChannel"
+      responses:
+          "200":
+            description: "Succesfully updated"
+          "405":
+            description: "Malformed body request / Invalid parameter"
+          "400":
+            description: "Unauthorized action"
+          "500":
+            description: "Server or database error description"
+            content:
+              application/json:
+                schema:
+                  type: object
+
+components:
+  securitySchemes:
+    authorization:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+  schemas:
+      Login:
+        type: "object"
+        properties:
+          user:
+            type: "string"
+            example: "admin@rocket.com"
+          password:
+            type: "string"
+            example: "891278963admin"
+      CreateRegion:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+            example: "Sudamérica"
+      GetRegions:
+        type: "array"
+        items:
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            name:
+              type: "string"
+              example: "Norteamérica"
+      CreateCountry:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+            example: "Argentina"
+          region_id:
+            type: "integer"
+            format: "int64"
+            example: 1
+      GetCountries:
+        type: "array"
+        items:
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            name:
+              type: "string"
+              example: "Argentina"
+            region_id:
+              type: "integer"
+              format: "int64"
+              example: 2
+      CreateCity:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+            example: "Córdoba"
+          country_id:
+            type: "integer"
+            format: "int64"
+            example: 5
+      GetCities:
+        type: "array"
+        items:
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            name:
+              type: "string"
+              example: "Rosario"
+            country_id:
+              type: "integer"
+              format: "int64"
+              example: 5
+      CreateContact:
+        type: "object"
+        properties:
+          firstname:
+            type: "string"
+            example: "Claudia"
+          lastname:
+            type: "string"
+            example: "Olivares Díaz"
+          email:
+            type: "string"
+            example: "colivares@empresa.com"
+          company_id:
+            type: "integer"
+            format: "int64"
+            example: 1
+          city_id:
+            type: "integer"
+            format: "int64"
+            example: 3
+          address:
+            type: "string"
+            example: "Av. Las Calles 456"
+          job_title:
+            type: "string"
+            example: "Community Manager"
+          interesting:
+            type: "integer"
+            format: "int64"
+            example: 75
+      GetAllContacts:
+        type: "array"
+        items:
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+              example: 10
+            firstname:
+              type: "string"
+              example: "Claudia"
+            lastname:
+              type: "string"
+              example: "Olivares Díaz"
+            email:
+              type: "string"
+              example: "colivares@empresa.com"
+            address:
+              type: "string"
+              example: "Av. Las Calles 456"
+            company_id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            company_name:
+              type: "string"
+              example: "Alma Verde"
+            city_id:
+              type: "integer"
+              format: "int64"
+              example: 3
+            city_name:
+              type: "string"
+              example: "Córdoba"
+            country_id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            country_name:
+              type: "string"
+              example: "Argentina"
+            region_id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            region_name:
+              type: "string"
+              example: "Sudamérica"
+            job_title:
+              type: "string"
+              example: "Community Manager"
+            interesting:
+              type: "integer"
+              format: "int64"
+              example: 75
+      CreateUser:
+        type: "object"
+        properties:
+          firstname:
+            type: "string"
+            example: "Lola"
+          lastname:
+            type: "string"
+            example: "Márquez"
+          email:
+            type: "string"
+            example: "lmarquez@rocket.com"
+          admin:
+            type: "integer"
+            format: "int64"
+            example: 1
+          password:
+            type: "string"
+            example: "jc19762508"
+      GetAllUsers:
+        type: "array"
+        items:
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+              example: 15
+            firstname:
+              type: "string"
+              example: "Lucía"
+            lastname:
+              type: "string"
+              example: "Sandovares"
+            email:
+              type: "string"
+              example: "lsandovares@rocket.com"
+            admin:
+              type: "integer"
+              format: "int64"
+              example: 0
+      CreateCompany:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+            example: "Más MKT"
+          address:
+            type: "string"
+            example: "Av. de los Libertadores 7896"
+          email:
+            type: "string"
+            example: "hola@masmkt.com"
+          phone:
+            type: "string"
+            example: "+5493512289563"
+          city_id:
+            type: "integer"
+            format: "int64"
+            example: 3
+      GetCompanies:
+        type: "array"
+        items:
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            name:
+              type: "string"
+              example: "Más MKT"
+            address:
+              type: "string"
+              example: "Av. de los Libertadores 7896"
+            email:
+              type: "string"
+              example: "hola@masmkt.com"
+            phone:
+              type: "string"
+              example: "+5493512289563"
+            city_id:
+              type: "integer"
+              format: "int64"
+              example: 3
+      CreateContactChannel:
+        type: "object"
+        properties:
+          channel_id:
+            type: "integer"
+            format: "int64"
+            example: 1
+          contact_id:
+            type: "integer"
+            format: "int64"
+            example: 3
+          value:
+            type: "string"
+            example: "miemail@correo.com"
+          preference:
+            type: "string"
+            example: "Favorito"
+      GetContactChannels:
+        type: "array"
+        items:
+          properties:
+            id:
+                type: "integer"
+                format: "int64"
+                example: 1
+            channel_id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            contact_id:
+              type: "integer"
+              format: "int64"
+              example: 3
+            value:
+              type: "string"
+              example: "miemail@correo.com"
+            preference:
+              type: "string"
+              example: "Favorito"
+      UpdateContactChannel:
+        type: "object"
+        properties:
+          channel_id:
+            type: "integer"
+            format: "int64"
+            example: 3
+          value:
+            type: "string"
+            example: "otroemail@correo.com"
+          preference:
+            type: "string"
+            example: "No molestar"
+      GetChannels:
+        type: "array"
+        items:
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+              example: 1
+            name:
+              type: "string"
+              example: "Whatsapp"

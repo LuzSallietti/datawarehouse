@@ -1,0 +1,43 @@
+.bg-plain{
+    background-image: none;
+}
+.table-header{
+    margin: 0px 5% 0 5%;
+    padding: 16px 8px;
+    border-top: 2px solid $blue;
+    background-color: $pacific;
+}
+.results{
+    padding: 12px 6px;
+    margin: 0 5%;
+    background-color: $grey;
+    color: $bootstrapGrey;
+    border-bottom: 3px solid $white;
+}
+.create-user{
+    height: 100vh;
+    width: 98vw;
+    position: absolute;
+    top:0px;    
+    align-items: flex-start;
+    background-color: $white;
+    
+}
+.close-icon {
+    position: absolute;
+    left: 83%;
+    top: 25px;
+    z-index: 10;
+    font-size: 24px;
+}
+.actions-icons {
+    &:hover {
+        color: $purple;
+    }
+}
+.delete-modals{
+    background-color: $pacific;
+    position: absolute;
+    top:25%;    
+    
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/2b49350120.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css" type="text/css" />  
+    <title>Usuarios</title>
+  </head>
+  <body class="bg-plain">
+    <header>
+      <nav class="navbar">
+        <a class="navbar-brand m-3 d-flex align-items-center justify-content-center" href="#">
+          <img class="w-75 h-auto" src="./img/logo-navy.png" alt="logo" />
+        </a>
+        <div class="w-50">
+          <ul
+            class="navbar-nav d-flex flex-row flex-nowrap justify-content-around"
+          >
+            <li class="">
+              <a class="nav-links" href="contacts.html">Contactos</a>
+            </li>
+            <li class="">
+              <a class="nav-links" href="companies.html">Compañías</a>
+            </li>
+            <li class="">
+              <a class="nav-links is-active" href="#">Usuarios</a>
+            </li>
+            <li class="">
+              <a class="nav-links" href="regions.html">Región/Ciudad</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- Modal acción Exitosa-->
+      <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header success-header">
+              <h5 class="modal-title" id="confirmationModalLabel">You rocked it!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeConfirmationModal">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p> Acción ejecutada con éxito </p>
+            </div>            
+          </div>
+        </div>
+      </div>
+      <section class="row mx-auto mt-4 mb-5"> <!--BOTONES-->
+        <div class="col-6">          
+        </div>
+        <div class="col-1 d-flex justify-content-end align-items-center">        
+        </div>        
+        <div class="col-3 m-auto d-flex justify-content-start align-items-center">
+          <!--crear usuario-->
+          <button class="btn rocket-btn py-2" id="create-user"><i class="fas fa-user-plus mr-2"></i>Crear usuario</button>
+        </div>
+      </section>
+      <!-- modal confirmación Eliminar Usuario -->
+      <section class="row position-relative mx-auto justify-content-center hidden visuallyhidden index delete-contact-modal" id="delete-modal">
+        <i class="purple-text fas fa-times-circle close-icon" id="close-alert-msg"></i>
+        
+        <div class="delete-modals col-9 d-flex align-items-center justify-content-center flex-row flex-wrap py-5">
+          <i class="fas fa-exclamation-triangle alert-msg alert-icon py-3"></i>            
+          <p class="alert-msg w-100 text-center">Esta acción eliminará definitivamente este usuario.<br>¿Estás seguro?</p>     
+            
+              <div class="col-3 px-3">                                  
+                <button class="btn rocket-secondary-btn w-100 my-3" id="cancelDelete">
+                  Cancelar
+                </button>                
+              </div>
+              <div class="col-3 px-3">                                  
+                <button id="deleteUser" class="btn rocket-btn w-100 my-3">
+                  Aceptar
+                </button>                
+              </div>                       
+        </div>
+      </section>                               
+      <!--RESULTADOS Encabezados-->
+      <section class="table-header row row mx-auto w-75 justify-content-center align-items-center"> 
+        
+        <div class="col-3 d-flex align-items-center justify-content-center">
+          <h4 class="text-white">Nombre</h4>
+        </div>
+        <div class="col-3 d-flex align-items-center justify-content-center">
+          <h4 class="text-white">Apellido</h4>
+        </div>
+        <div class="col-3 d-flex align-items-center justify-content-center">
+          <h4 class="text-white">Email</h4>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <h4 class="text-white">Perfil</h4>
+        </div>
+        <div class="col-1 d-flex align-items-center justify-content-center">
+          <h4 class="text-white">Acciones</h4>
+        </div>
+      </section>      
+      <section id ="users-list">
+      <!--resultados BD-->        
+      </section>
+      <!-- formulario de creación de usuarios-->
+      <section class="row create-user m-auto hidden visuallyhidden index p-5" id="new-user-section">
+        <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-form"></i>
+        
+        <div class="col-9 d-flex align-items-start justify-content-center mx-auto">                       
+          <!-- form-->
+          <form class="m-auto w-100 white-form" id="new-user-form">
+            <h3 class="blue-text py-4">
+              <i class="blue-text fas fa-user-plus mr-3"></i>Crear usuario
+            </h3>            
+            <div class="form-row align-items-center justify-content-around my-2">
+              <div class="col-4 px-3">              
+                <label for="nombre">Nombre *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="new-user-firstname"
+                  required
+                />
+                <small class="form-text text-muted"
+                  >Ingresa el nombre</small
+                >
+              </div>
+              <div class="col-4 px-3">              
+                <label for="apellido">Apellido *</label>
+                <input type="text" class="form-control .bg-dark" id="new-user-lastname" required />
+                <small class="form-text text-muted"
+                  >Ingresa el apellido</small
+                >
+              </div>
+              <div class="col-4 px-3">              
+                <label for="email">E-mail *</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="new-user-email"
+                  placeholder="ejemplo@email.com"                  
+                />
+                <small class="form-text text-muted"
+                  >Ingresa el email</small
+                >
+              </div>
+            </div>
+            <div class="form-row justify-content-around my-2">         
+            
+              <div class="col-4 px-3">
+                <label for="perfil">Perfil *</label>
+                <select class="form-control custom-select" id="new-user-admin" required>
+                  <option selected value="0">Básico</option>
+                  <option value="1">Administrador</option>                                  
+                </select>
+                <small class="form-text text-muted">Selecciona el tipo de usuario</small>
+              </div>            
+              <div class="col-4 px-3">
+                <label for="password">Password *</label>
+                <input type="password" class="form-control .bg-dark" id="new-user-password" required />
+                <small id="checkPass" class="form-text text-muted"
+                  >Ingresa la contraseña </small
+                >
+              </div> 
+              <div class="col-4 px-3">
+                <label for="password">Repetir contraseña *</label>
+                <input type="password" class="form-control .bg-dark" id="repeat-new-user-password" required />
+                <small class="form-text text-muted">Repite la contraseña </small>            
+              </div>               
+            </div>
+            <div class="form-row justify-content-end my-4">
+              <div class="col-3 px-3">                                  
+                <button id="cleanCreateUser" class="btn rocket-secondary-btn w-100 my-3">
+                  Limpiar datos
+                </button>                
+              </div>
+              <div class="col-3 px-3">                                  
+                <button type="submit" class="btn rocket-btn w-100 my-3" id="confirm-create-user">
+                  Crear usuario
+                </button>                
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    <!-- formulario de EDICION de usuarios-->
+      <section class="row create-user m-auto hidden visuallyhidden index p-5" id="edit-user-section">
+        <i class="purple-text fas fa-times-circle position-relative close-icon" id="close-edit-form"></i>      
+        <div class="col-9 d-flex align-items-start justify-content-center mx-auto">     
+          <!-- form-->
+          <form class="m-auto w-100 white-form" id="edit-user-form">
+            <h3 class="blue-text py-4">
+              <i class="blue-text fas fa-user-edit mr-3"></i>Editar usuario
+            </h3>            
+            <div class="form-row align-items-center justify-content-around my-2">
+              <div class="col-4 px-3">              
+                <label for="nombre">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="edit-user-firstname"                  
+                />
+                <small class="form-text text-muted"
+                  >Ingresa el nombre</small
+                >
+              </div>
+              <div class="col-4 px-3">              
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control .bg-dark" id="edit-user-lastname" />
+                <small class="form-text text-muted"
+                  >Ingresa el apellido</small
+                >
+              </div>
+              <div class="col-4 px-3">              
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="edit-user-email"
+                  placeholder="ejemplo@email.com"                  
+                />
+                <small class="form-text text-muted"
+                  >Ingresa el email</small
+                >
+              </div>
+            </div>
+            <div class="form-row justify-content-around my-2">         
+            
+              <div class="col-4 px-3">
+                <label for="perfil">Perfil</label>
+                <select class="form-control custom-select" id="edit-user-admin">
+                  <option selected value="0">Básico</option>
+                  <option value="1">Administrador</option>                                  
+                </select>
+                <small class="form-text text-muted">Selecciona el tipo de usuario</small>
+              </div>            
+              <div class="col-4 px-3">
+                <label for="password">Password *</label>
+                <input type="password" class="form-control .bg-dark" id="edit-user-password" required/>
+                <small id="passError" class="form-text text-muted"
+                  >Ingresa la contraseña </small
+                >
+              </div> 
+              <div class="col-4 px-3">
+                <label for="password">Repetir contraseña *</label>
+                <input type="password" class="form-control .bg-dark" id="repeat-edit-user-password" required />
+                <small class="form-text text-muted">Repite la contraseña </small>            
+              </div> 
+            </div>
+            <div class="form-row justify-content-end my-4">
+              <div class="col-3 px-3">                                  
+                <button class="btn rocket-secondary-btn w-100 my-3" id="resetEdition">
+                  Limpiar datos
+                </button>                
+              </div>
+              <div class="col-3 px-3">                                  
+                <button type="submit" class="btn rocket-btn w-100 my-3">
+                  Actualizar usuario
+                </button>                
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>        
+    </main>   
+   
+
+    <!--JS Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- functions-->
+    <script src="./js/display_animation.js"></script>
+    <script src="./js/users.js"></script>   
+  </body>
+</html>

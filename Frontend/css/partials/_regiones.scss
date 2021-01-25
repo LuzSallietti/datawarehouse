@@ -1,0 +1,105 @@
+.regions-header{
+  margin: 0px 5% 0 5%;
+  padding: 16px 8px;
+  border-top: 2px solid $blue;
+  background-color: $grey;
+}
+
+/* Remove default bullets */
+ul, #myUL {
+    list-style-type: none;
+    color: $bootstrapGrey;
+    
+      li{
+        border-bottom: 3px solid $white;
+      }
+    }
+  
+  
+  /* Remove margins and padding from the parent ul */
+  #myUL {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style the caret/arrow */
+  .caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+    font-weight: 500;
+  }
+  
+  /* Create the caret/arrow with a unicode, and style it */
+  .caret::before {
+    content: "\25B6";
+    color:$pacific;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+  .caret-down::before {
+    transform: rotate(90deg);
+  }
+  
+  /* Hide the nested list */
+  .nested {
+    display: none;
+  }
+  
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+  .active {
+    display: block;
+  }
+  .regions-btn{
+    background-color: $pacific;
+    color: $white;
+    font-size: 12px;
+    transition: all 0.25s ease-in;
+    &:hover {
+        color: white;
+        opacity: 65%;        
+    }    
+}
+.country{
+    color: $bootstrapGrey;
+    font-size: 15px;
+    background-color: #C6E5FB;    
+    font-weight: 500;
+}
+.reg-actions-btn{
+   
+    border-radius: 4px;
+    color: $bootstrapGrey;
+    font-size: 12px;
+    transition: all 0.25s ease-in;
+    &:hover {
+        color: $purple;
+        opacity: 65%;        
+    }    
+}
+.city{
+    color: $bootstrapGrey;
+    font-size: 15px;   
+    border-bottom: none;
+    background-color: #B3DCFA;
+}
+.caret-blue {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+    font-weight: 500;
+  }
+  
+  /* Create the caret/arrow with a unicode, and style it */
+  .caret-blue::before {
+    content: "\25B6";
+    color:$pacific;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .alert-msg{
+      color:$white;
+  }
+  .alert-icon{
+      font-size: 1.5rem;
+  }
