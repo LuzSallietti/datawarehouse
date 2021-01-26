@@ -41,12 +41,19 @@ npm install
 ```
 #### 3 - Crear variables de entorno
 Dentro de la carpeta Backend del repositorio, crear un archivo .env con las siguientes variables y sus valores:
+
 mysql_db = datawarehouse
+
 mysql_user = asigna tu valor
+
 mysql_pass = asigna tu valor
+
 mysql_host = localhost
+
 mysql_db_port = 3306
+
 jtw_SEED = asigna tu valor
+
 PORT = 3000
 
 
