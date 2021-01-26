@@ -254,7 +254,8 @@ ul li, #myUL li {
 .reg-actions-btn {
   border-radius: 4px;
   color: #495057;
-  font-size: 12px;
+  font-size: 16px;
+  cursor: pointer;
   -webkit-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
 }

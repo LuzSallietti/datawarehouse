@@ -40,14 +40,14 @@ Desde la consola, con el comando:
 npm install
 ```
 #### 3 - Crear variables de entorno
-Dentro de la carpeta server del repositorio, crear un archivo .env con las siguientes variables y sus valores:
-* PORT = 3000
-* mysql_db = datawarehouse
-* mysql_host = localhost
-* mysql_db_port = 3306
-* mysql_user = (asignar el usuario)
-* mysql_pass = (asignar el password)
-* jtw_SEED = (asignar un valor)
+Dentro de la carpeta Backend del repositorio, crear un archivo .env con las siguientes variables y sus valores:
+mysql_db = datawarehouse
+mysql_user = asigna tu valor
+mysql_pass = asigna tu valor
+mysql_host = localhost
+mysql_db_port = 3306
+jtw_SEED = asigna tu valor
+PORT = 3000
 
 
 #### 4 - Crear la base de datos
@@ -67,7 +67,7 @@ node app.js
 ```
 
 ## Login y navegación
-Abrir el archivo /Frontend/index.html desde el navegador web y ejecutar el acceso con las credenciales ya creadas en la base de datos, con privilegio de administrador (usuario: admin@rocket.com / password: acamica).
+Abrir el archivo /Frontend/index.html desde el navegador web, ejecutando localhost en el puerto 5500 (con Live Server por ej. desde Visual Studio Code): http://localhost:5500/Frontend/index.html y ejecutar el acceso con las credenciales ya creadas en la base de datos, con privilegio de administrador (usuario: admin@rocket.com / password: acamica).
 * En la sección Usuarios se podrán consultar, crear, actualizar y eliminar usuarios del sistema, asignándoles pefil de usuario administrador o usuario básico.
 * En la sección Región/Ciudad se podrán crear, consultar, actualizar y eliminar regiones, países y ciudades.
 * En la sección Compañías se podrán crear, consultar, actualizar y eliminar compañías.

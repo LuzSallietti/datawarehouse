@@ -217,8 +217,8 @@ function display_DB_Regions (array, section){
         <ul id="region-${result.id}">
             <li class="py-2">
                 <span class="caret">${result.name}</span>
-                <a class="btn reg-actions-btn ml-5 mr-1 a-edit-region" title="Editar"><i class="fas fa-edit" id ="regionUpd-${result.id}"></i></a>
-                <a class="btn reg-actions-btn mx-1 delete-region" title="Eliminar"><i class="fas fa-trash-alt" id ="regionDel-${result.id}"></i></a>
+                <i class="fas fa-edit reg-actions-btn ml-5 a-edit-region" title="Editar" id ="regionUpd-${result.id}"></i>
+                <i class="fas fa-trash-alt reg-actions-btn ml-3 delete-region" title="Eliminar" id ="regionDel-${result.id}"></i>
                 <a class="btn regions-btn ml-4 mr-1 create-region create-country add-country" id = "reg-${result.id}"><i class="fas fa-plus mr-2"></i>Nuevo país</a>
                 <ul class="nested" id="nested-region-${result.id}">
                 </ul>
@@ -237,9 +237,9 @@ function display_DB_Countries(array){
         region_list.appendChild(new_list);
         new_list.classList.add("py-2", "px-4", "my-2", "country");
         new_list.innerHTML=`
-        <span class="caret-blue">${element.name}</span><a class="btn reg-actions-btn ml-5 mr-1 a-edit-country" title="Editar" ><i class="fas fa-edit" id="countryUpd-${element.id}" data-regionID=${element.region_id}></i></a><a class="btn reg-actions-btn mx-1 a-delete-country" title="Eliminar" ><i class="fas fa-trash-alt" id="countryDel-${element.id}"></i></a> <a class="btn regions-btn ml-4 mr-1 add-city" id="ctryID-${element.id}"><i class="fas fa-plus mr-2"></i>Nueva ciudad</a>
+        <span class="caret-blue">${element.name}</span><i class="fas fa-edit reg-actions-btn ml-5 mr-1 a-edit-country" title="Editar" id="countryUpd-${element.id}" data-regionID=${element.region_id}></i><i class="fas fa-trash-alt reg-actions-btn ml-3 a-delete-country" title="Eliminar" id="countryDel-${element.id}"></i><a class="btn regions-btn ml-4 mr-1 add-city" id="ctryID-${element.id}"><i class="fas fa-plus mr-2"></i>Nueva ciudad</a>
         <ul class="nested" id="nested-country-${element.id}">
-                </ul>
+        </ul>
         `          
     });
     editTriggers(edit_ctry_btns, edit_country_section);
@@ -254,7 +254,7 @@ function display_DB_Cities (array){
         country_list.appendChild(new_list);
         new_list.classList.add("py-2", "px-4", "city", "my-2");
         new_list.innerHTML=`
-        <span class="caret-blue">${element.name}</span><a class="btn reg-actions-btn ml-5 mr-1 a-edit-city" title="Editar" ><i class="fas fa-edit" id="cityUpd-${element.id}" data-countryID=${element.country_id}></i></a><a class="btn reg-actions-btn mx-1 a-delete-city" title="Eliminar"><i class="fas fa-trash-alt" id="cityDel-${element.id}"></i></a>
+        <span class="caret-blue">${element.name}</span> <i class="fas fa-edit reg-actions-btn  ml-5 a-edit-city" title="Editar" id="cityUpd-${element.id}" data-countryID=${element.country_id}></i><i class="fas fa-trash-alt reg-actions-btn ml-3 a-delete-city" title="Eliminar" id="cityDel-${element.id}"></i>
         `        
     });
     editTriggers(edit_city_btns, edit_city_section);

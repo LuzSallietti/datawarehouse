@@ -71,7 +71,8 @@ ul, #myUL {
    
     border-radius: 4px;
     color: $bootstrapGrey;
-    font-size: 12px;
+    font-size: 16px;
+    cursor: pointer;
     transition: all 0.25s ease-in;
     &:hover {
         color: $purple;
