@@ -1,5 +1,5 @@
 node_modules/
-.env
+/*.env
 recursos-extras/
 jslists/
 npm-debug.log
