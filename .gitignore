@@ -2,3 +2,5 @@ node_modules/
 .env
 recursos-extras/
 jslists/
+npm-debug.log
+.DS_Store
